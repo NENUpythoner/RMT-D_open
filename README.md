@@ -1,4 +1,3 @@
-High‑resolution figures presented in the paper can be accessed in this repository. 
+High‑resolution figures from the manuscript are available in this repository.
 
-The implementation code and demo examples of RMT‑D will be made publicly available upon paper acceptance.
-
+The implementation code and demo examples of RMT‑D will be released upon acceptance of the manuscript.
