@@ -1,0 +1,7 @@
+Heatmaps of local K--S diagnostics for residual Gaussianity in slice 16.
+The three rows correspond to nominal Gaussian noise levels of σ=2, 5, and 10, respectively.
+Each voxel displays -\log_{10}{\left[{mean}_{t}\left\{p_{KS}\left(v,t\right)\right\}\right]}.
+The color bar is labeled -\log_{10}{p}, and the reference threshold is -\log_{10}{\left(0.05\right)}.
+Values above this threshold correspond to a temporally averaged p value below 0.05, whereas the remaining values indicate insufficient evidence to reject Gaussianity under this descriptive summary.
+The displayed values are not additionally truncated.
+Gray regions in the VSTSVS results denote boundary locations that were not processed because of the preset kernel size and therefore contain NaN values.
