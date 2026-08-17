@@ -1,0 +1,8 @@
+Residual statistics at the nominal Gaussian noise level of σ=5.
+(a) Profiles extracted from Fig.~2(h)--(n) along the three-dimensional spatial diagonal from voxel 1,1,1 to H,W,Z.
+The horizontal axis denotes the voxel index along the path, and the vertical axis denotes the residual temporal standard deviation.
+MSE and r denote the mean squared error and Pearson correlation coefficient, respectively, between each method-specific profile and the known-noise reference profile.
+(b) At each time point, the absolute difference between the number of foreground voxels for which there was insufficient evidence to reject Gaussianity for each method and the corresponding known-noise reference count.
+The horizontal axis denotes the time point, and the vertical axis denotes the absolute voxel-count difference.
+ΔMean in the legend denotes the absolute difference between the temporal mean count for each method and that of the known-noise reference.
+Here, r denotes the Pearson correlation coefficient between the corresponding method-specific and known-noise voxel-count trajectories.
