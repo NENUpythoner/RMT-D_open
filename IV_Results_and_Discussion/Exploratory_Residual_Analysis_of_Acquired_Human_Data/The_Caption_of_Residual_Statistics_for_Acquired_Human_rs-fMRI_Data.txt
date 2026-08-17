@@ -1,0 +1,9 @@
+Residual statistics for acquired human rs-fMRI data.
+
+(a) Profiles extracted along the three-dimensional spatial diagonal from voxel 1,1,1 to H,W,Z from Fig.4(g)--(l).
+The horizontal axis denotes the voxel index along the path, and the vertical axis denotes the residual temporal standard deviation.
+Mean and standard deviation in the legend denote the mean and standard deviation of the profile values at the common valid path locations, respectively.
+
+(b) Number of foreground voxels at each time point for which there was insufficient evidence to reject Gaussianity.
+The horizontal axis denotes the time point, and the vertical axis denotes the number of voxels satisfying p_{KS}\geq 0.05.
+Mean and standard deviation in the legend denote the temporal mean and standard deviation of the voxel-count trajectory, respectively.
