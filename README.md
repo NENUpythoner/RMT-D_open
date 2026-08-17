@@ -10,7 +10,8 @@
 
 ![Method](https://img.shields.io/badge/Method-Random%20Matrix%20Theory-1f4e79?style=flat-square)
 ![Application](https://img.shields.io/badge/Application-rs--fMRI%20Denoising-2a7f9e?style=flat-square)
-![Status](https://img.shields.io/badge/Code-Coming%20Soon-7f8c8d?style=flat-square)
+![Training](https://img.shields.io/badge/Training-Free-3b7a57?style=flat-square)
+![Code](https://img.shields.io/badge/Code-Release%20upon%20acceptance-7f8c8d?style=flat-square)
 
 </div>
 
@@ -18,13 +19,51 @@
 
 ## Overview
 
-Unstructured random thermal noise can reduce the detection sensitivity of resting-state functional magnetic resonance imaging (rs-fMRI) and perturb blood oxygen level-dependent (BOLD) time series and functional connectivity (FC) estimates. To address this issue, we propose RMT-D, a training-free denoising method based on random matrix theory (RMT). RMT-D constructs local Casorati matrices at multiple in-plane patch scales and selects the spatial support voxel by voxel by balancing spectral energy against relative rank complexity. At each candidate scale, a sequential test calibrated by the Tracy--Widom distribution jointly estimates the local signal rank and noise scale. RMT-D then applies spectral shrinkage that accounts for singular-vector misalignment to reconstruct the denoised signal. We evaluated RMT-D using simulated data with spatially varying Gaussian and Rician noise, acquired human rs-fMRI data, and controlled head-motion simulations. Among the compared methods, RMT-D achieved the lowest MSE and the highest PSNR across all tested noise types and levels. It also achieved the lowest FC errors at low-to-moderate noise levels while remaining competitive at the highest noise level. The simulated residuals more closely matched the known-noise reference in their spatial distribution. Exploratory analyses of the acquired human data showed that the RMT-D residuals contained less visually apparent anatomical structure. The controlled head-motion experiments further showed that applying RMT-D after motion correction generally yielded better denoising performance than applying the procedures in the reverse order. Overall, RMT-D provides a statistically interpretable approach for suppressing random thermal noise in rs-fMRI.
+Unstructured random thermal noise can reduce the detection sensitivity of resting-state functional magnetic resonance imaging (rs-fMRI) and perturb blood oxygen level-dependent (BOLD) time series and functional connectivity (FC) estimates.
 
-## Repository Contents
+We propose **RMT-D**, a training-free and statistically interpretable denoising method based on random matrix theory (RMT).
 
-- High-resolution figures from the manuscript are available in this repository.
-- The implementation code and demo examples of RMT-D will be released upon acceptance of the manuscript.
+For each target voxel, RMT-D constructs local Casorati matrices at multiple in-plane spatial scales and performs denoising through three main components:
 
-## Citation
+1. **T--W-calibrated rank and noise-scale estimation**  
+   A sequential test calibrated by the Tracy--Widom distribution jointly estimates the effective local rank and noise scale at each candidate spatial support.
 
-Citation information will be updated after publication.
+2. **Voxel-wise spatial-support selection**  
+   The spatial support is selected adaptively by balancing the fraction of explained spectral energy against relative rank complexity.
+
+3. **Alignment-aware spectral shrinkage**  
+   The latent singular-value amplitudes of the retained spectral components are estimated, and spectral shrinkage incorporates left- and right-singular-vector alignment coefficients to compensate for noise-induced singular-vector misalignment.
+
+The final reconstruction retains only the denoised time series of the target voxel.
+
+---
+
+## Method Overview
+
+The processing pipeline of RMT-D can be summarized as
+
+```text
+Observed rs-fMRI
+      │
+      ▼
+Multiscale local Casorati matrices
+      │
+      ▼
+Module A
+T--W-calibrated joint estimation
+of effective rank and noise scale
+      │
+      ▼
+Module B
+Voxel-wise spatial-support selection
+      │
+      ▼
+Module C
+Alignment-aware spectral shrinkage
+and target-voxel reconstruction
+      │
+      ▼
+Denoised rs-fMRI
+
+
+
