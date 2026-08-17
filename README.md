@@ -10,60 +10,56 @@
 
 ![Method](https://img.shields.io/badge/Method-Random%20Matrix%20Theory-1f4e79?style=flat-square)
 ![Application](https://img.shields.io/badge/Application-rs--fMRI%20Denoising-2a7f9e?style=flat-square)
-![Training](https://img.shields.io/badge/Training-Free-3b7a57?style=flat-square)
-![Code](https://img.shields.io/badge/Code-Release%20upon%20acceptance-7f8c8d?style=flat-square)
+![Status](https://img.shields.io/badge/Code-Coming%20Soon-7f8c8d?style=flat-square)
 
 </div>
 
 ---
 
-## Overview
+## Abstract
 
-Unstructured random thermal noise can reduce the detection sensitivity of resting-state functional magnetic resonance imaging (rs-fMRI) and perturb blood oxygen level-dependent (BOLD) time series and functional connectivity (FC) estimates.
-
-We propose **RMT-D**, a training-free and statistically interpretable denoising method based on random matrix theory (RMT).
-
-For each target voxel, RMT-D constructs local Casorati matrices at multiple in-plane spatial scales and performs denoising through three main components:
-
-1. **T--W-calibrated rank and noise-scale estimation**  
-   A sequential test calibrated by the Tracy--Widom distribution jointly estimates the effective local rank and noise scale at each candidate spatial support.
-
-2. **Voxel-wise spatial-support selection**  
-   The spatial support is selected adaptively by balancing the fraction of explained spectral energy against relative rank complexity.
-
-3. **Alignment-aware spectral shrinkage**  
-   The latent singular-value amplitudes of the retained spectral components are estimated, and spectral shrinkage incorporates left- and right-singular-vector alignment coefficients to compensate for noise-induced singular-vector misalignment.
-
-The final reconstruction retains only the denoised time series of the target voxel.
+Unstructured random thermal noise can reduce the detection sensitivity of resting-state functional magnetic resonance imaging (rs-fMRI) and perturb blood oxygen level-dependent (BOLD) time series and functional connectivity (FC) estimates. To address this issue, we propose RMT-D, a training-free denoising method based on random matrix theory (RMT). RMT-D constructs local Casorati matrices at multiple in-plane patch scales and selects the spatial support voxel by voxel by balancing spectral energy against relative rank complexity. At each candidate scale, a sequential test calibrated by the Tracy--Widom distribution jointly estimates the local signal rank and noise scale. RMT-D then applies spectral shrinkage that accounts for singular-vector misalignment to reconstruct the denoised signal. We evaluated RMT-D using simulated data with spatially varying Gaussian and Rician noise, acquired human rs-fMRI data, and controlled head-motion simulations. Among the compared methods, RMT-D achieved the lowest MSE and the highest PSNR across all tested noise types and levels. It also achieved the lowest FC errors at low-to-moderate noise levels while remaining competitive at the highest noise level. Overall, RMT-D provides a statistically interpretable approach for suppressing random thermal noise in rs-fMRI.
 
 ---
 
-## Method Overview
+## Repository Contents
 
-The processing pipeline of RMT-D can be summarized as
+This repository archives research resources associated with the RMT-D study.
 
-```text
-Observed rs-fMRI
-      │
-      ▼
-Multiscale local Casorati matrices
-      │
-      ▼
-Module A
-T--W-calibrated joint estimation
-of effective rank and noise scale
-      │
-      ▼
-Module B
-Voxel-wise spatial-support selection
-      │
-      ▼
-Module C
-Alignment-aware spectral shrinkage
-and target-voxel reconstruction
-      │
-      ▼
-Denoised rs-fMRI
+- **`Fig_1.pdf`**: High-resolution RMT-D framework figure.
+- **`IV_Results_and_Discussion/`**: Figures and tables generated from the experimental analyses.
+- **`Code/`**: Implementation resources for RMT-D and the experiments.
 
+---
 
+## Experimental Results
 
+The experimental results are organized into four sections for convenient inspection:
+
+- **A. Denoising Results on Simulated Data**  
+  Gaussian- and Rician-noise simulation results and residual analyses.
+
+- **B. Exploratory Residual Analysis of Acquired Human Data**  
+  Residual analyses for acquired human rs-fMRI data.
+
+- **C. Controlled Head-Motion Results**  
+  Results under controlled head motion and different processing orders.
+
+- **D. Ablation Study**  
+  Results for different combinations of Modules A, B, and C.
+
+The figures and tables in these folders are organized according to their corresponding experimental analyses.
+
+---
+
+## Availability
+
+High-resolution figures and organized experimental results are currently archived in this repository.
+
+The simulated dataset, the complete implementation of RMT-D, the accompanying code for all experiments, and demonstration examples will be publicly released upon acceptance of the manuscript.
+
+---
+
+## Citation
+
+Citation information will be updated after publication.
