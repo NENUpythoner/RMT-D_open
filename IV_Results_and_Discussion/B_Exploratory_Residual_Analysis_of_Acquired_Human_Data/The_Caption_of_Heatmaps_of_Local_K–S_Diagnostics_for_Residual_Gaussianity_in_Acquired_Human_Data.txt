@@ -1,7 +1,0 @@
-Heatmaps of local K–S diagnostics for residual Gaussianity in acquired human rs-fMRI data.
-The two rows correspond to slices 16 and 23, respectively.
-The residuals were standardized using the RMT-D noise-scale estimate as a common normalization reference.
-Each voxel displays -{log}_{10}\left[{mean}_{t}\{p_{KS}\left(v,t\right)\}\right], and the reference threshold is -{log}_{10}\left(0.05\right).
-Values above this threshold correspond to a temporally averaged p value below 0.05, whereas the remaining values indicate insufficient evidence to reject Gaussianity under this descriptive summary.
-The displayed values are not additionally truncated.
-Gray regions in the VSTSVS results denote boundary locations that were not processed because of the preset kernel size and therefore contain NaN values.
