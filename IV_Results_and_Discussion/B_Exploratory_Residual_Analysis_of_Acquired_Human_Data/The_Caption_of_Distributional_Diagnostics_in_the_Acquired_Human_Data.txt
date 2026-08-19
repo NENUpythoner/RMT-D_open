@@ -1,6 +1,0 @@
-Distributional diagnostics for standardized residuals within the brain foreground in the acquired human rs-fMRI data.
-Markers show empirical log-density estimates \ln{\widehat{p}}\left(z\right) plotted against z^{2}, obtained using Gaussian kernel density estimation from finite standardized residuals within the common valid brain foreground.
-Solid curves show the corresponding zero-mean Gaussian log-density curves, with the standard deviation estimated from all finite standardized residuals for each method.
-The display range is truncated only for visualization and does not affect the estimation of the standard deviation.
-All methods use the noise scale estimated by RMT-D as the common normalization reference.
-The black curve represents the standard Gaussian distribution \mathcal{N}\left(0,1\right), which is included only as a descriptive reference.
